@@ -1,158 +1,78 @@
-<h2 class="text-muted">Datos del usuario </h2>
 <div class="row">
-    <div class="col-lg-8">
-        <div class="card card-default">
-            <div class="card-header">
-                <i class="fa fa-calculator fa-fw"></i> Información para cálculos
-            </div>
-            <!-- /.card-header -->
-            <div class="card-block">
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-badge info">
-                            <i class="fa fa-mars" *ngIf="isMale"></i>
-                            <i class="fa fa-venus" *ngIf="!isMale"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Soy <strong>{{isMale ? 'varón' : 'mujer'}}</strong></h4>
-                            </div>
-                            <div class="timeline-body">
-                                <div class="row">
-                                    <div class="col-sm-3" [(ngModel)]="isMale" ngbRadioGroup name="radioBasic">
-                                        <label class="btn btn-primary form-control">
-                                            <input type="radio" [value]="true"> <i class="fa fa-male"></i> 
-                                        </label>
-                                        <label class="btn btn-primary form-control">
-                                            <input type="radio" [value]="false"> <i class="fa fa-female"></i> 
-                                        </label>
-                                    </div>
-                                </div>
-                                <!--<div class="row">  
-                                    <app-switch textOn="Hombre" textOff="Mujer" ></app-switch>                                  
-                                </div>-->
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-badge info"><i class="fa fa-calendar"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">{{ age ? 'Tengo ' + age + ' años' : 'Wut?' }}</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <input type="number" class='form-control' [(ngModel)]="age">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-badge info"><i class="fa fa-arrows-v"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">{{ height ? 'Mido ' + height + (height > 0 ? ' centímetros' : ' centímetro') : 'Wut?' }}</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <input type="number" class='form-control' [(ngModel)]="height">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-badge info"><i class="fa fa-tachometer"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">{{ weight ? 'Peso ' + weight + (weight > 0 ? ' kilos' : ' kilo') : 'Wut?' }}</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <input type="number" class='form-control' [(ngModel)]="weight">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-badge info"><i class="fa fa-thermometer"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Nivel de actividad</h4>
-                            </div>
-                            <div class="timeline-body">
-                               <div class="row">
-                                    <div class="col-sm-3" [(ngModel)]="activity" ngbRadioGroup name="radioBasic">
-                                        <label class="btn btn-primary form-control">
-                                            <input type="radio" [value]="1"> <i class="fa fa-thermometer"></i> 
-                                        </label>
-                                        <label class="btn btn-primary form-control">
-                                            <input type="radio" [value]="2"> <i class="fa fa-thermometer-2"></i> 
-                                        </label>
-                                        <label class="btn btn-primary form-control">
-                                            <input type="radio" [value]="3"> <i class="fa fa-thermometer-3"></i> 
-                                        </label>
-                                        <label class="btn btn-primary form-control">
-                                            <input type="radio" [value]="4"> <i class="fa fa-thermometer-4"></i> 
-                                        </label>
-                                        <label class="btn btn-primary form-control">
-                                            <input type="radio" [value]="5"> <i class="fa fa-bolt"></i> 
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>                    
-                </ul>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
+    <div class="col-md-12">
+        <h2 class="page-header">Tus datos</h2>
     </div>
-    <div class="col-lg-4">
+</div>
+<div class="row">
+    <div class="col-md-6">
         <div class="card card-default">
-            <div class="card-header">
-                <i class="fa fa-cog fa-spin fa-fw"></i> Fórmula Harris-Benedict
-            </div>
-            <div class="card-body" *ngIf="isMale">
-                <p>TMB = (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) + 5 </p>
-                <p>TMB = (10 x {{weight}}) + (6,25 × {{height}}) - (5 × {{age}}) + 5</p>
-                <p>TMB = ({{10 * weight}}) + ({{6.25 * height}}) - ({{5 * age}}) + 5</p>
-                <p><strong>TMB = {{ getTMB() }}</strong></p>
-            </div>
-            <div class="card-body" *ngIf="!isMale">
-                <p>TMB = (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) - 161 </p>
-                <p>TMB = (10 x {{weight}}) + (6,25 × {{height}}) - (5 × {{age}}) - 161</p>
-                <p>TMB = ({{10 * weight}}) + ({{6.25 * height}}) - ({{5 * age}}) - 161</p>
-                <p><strong>TMB = {{ getTMB() }}</strong></p>
-            </div>            
-            <!-- /.card-header -->
-            <!-- /.card-body -->
-        </div>
-        <div class="card card-default my-3">
-            <div class="card-header">
-                <i class="fa fa-cog fa-spin fa-fw"></i> Consumo de calorías diarias
+            <div class="card-header card-info card-inverse">
+                <i class="fa fa-user fa-fw"></i> Datos necesarios para el cálculo
             </div>
             <div class="card-body">
-                <p>Poco o nada de ejercicio <strong>{{ (getTMB() * 1.2).toFixed(2) }} calorías</strong></p>
-                <p>Ejercicio 1-3 días por semana <strong>{{ (getTMB() * 1.375).toFixed(2) }} calorías</strong></p>
-                <p>Ejercicio 3-5 días por semana) <strong>{{ (getTMB() * 1.55).toFixed(2) }} calorías</strong></p>
-                <p>Ejercicio 6-7 días por semana <strong>{{ (getTMB() * 1.725).toFixed(2) }} calorías</strong></p>
-                <p>Ejercicio dos veces al día <strong>{{ (getTMB() * 1.9).toFixed(2) }} calorías</strong></p>
-                <p>Déficit 15% <strong>{{ ( (getTMB() * 1.2) - (getTMB() * 0.15 )).toFixed(2) }} calorías</strong></p>
+                <div class="card-block">
+                    <form role="form">
+                        <fieldset class="form-group">
+                            <label>Sexo</label>
+                            <bSwitch name="sex" switch-class="form-control" switch-off-text="femenino" switch-on-text="masculino" switch-on-color="info"
+                                switch-off-color="info" [(ngModel)]="isMale">
+                            </bSwitch>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label>Edad</label>
+                            <input type="number" class="form-control" [(ngModel)]="age" name="age">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label>Altura</label>
+                            <input type="number" class='form-control' [(ngModel)]="height" name="height">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label>Peso</label>
+                            <input type="number" class='form-control' [(ngModel)]="weight" name="weight">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label>Text Input with Placeholder</label>
+                            <input class="form-control" placeholder="Enter text">
+                        </fieldset>
+                    </form>
+                </div>
             </div>
-            <!-- /.card-header -->
-            <!-- /.card-body -->
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-default">
+            <div class="card-header card-info card-inverse">
+                <i class="fa fa-cog fa-fw"></i> Fórmula Harris-Benedict
+            </div>
+            <div class="card-block">
+                <div class="card-body" *ngIf="isMale">
+                    <p>TMB = (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) + 5 </p>
+                    <p>TMB = (10 x {{weight}}) + (6,25 × {{height}}) - (5 × {{age}}) + 5</p>
+                    <p>TMB = ({{10 * weight}}) + ({{6.25 * height}}) - ({{5 * age}}) + 5</p>
+                    <p><strong>TMB = {{ getTMB() }}</strong></p>
+                </div>
+                <div class="card-body" *ngIf="!isMale">
+                    <p>TMB = (10 x peso en kg) + (6,25 × altura en cm) - (5 × edad en años) - 161 </p>
+                    <p>TMB = (10 x {{weight}}) + (6,25 × {{height}}) - (5 × {{age}}) - 161</p>
+                    <p>TMB = ({{10 * weight}}) + ({{6.25 * height}}) - ({{5 * age}}) - 161</p>
+                    <p><strong>TMB = {{ getTMB() }}</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="card card-default my-3">
+            <div class="card-header card-info card-inverse">
+                <i class="fa fa-cog fa-fw"></i> Consumo de calorías diarias
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <p>Poco o nada de ejercicio <strong>{{ (getTMB() * 1.2).toFixed(2) }} calorías</strong></p>
+                    <p>Ejercicio 1-3 días por semana <strong>{{ (getTMB() * 1.375).toFixed(2) }} calorías</strong></p>
+                    <p>Ejercicio 3-5 días por semana) <strong>{{ (getTMB() * 1.55).toFixed(2) }} calorías</strong></p>
+                    <p>Ejercicio 6-7 días por semana <strong>{{ (getTMB() * 1.725).toFixed(2) }} calorías</strong></p>
+                    <p>Ejercicio dos veces al día <strong>{{ (getTMB() * 1.9).toFixed(2) }} calorías</strong></p>
+                    <p>Déficit 15% <strong>{{ ( (getTMB() * 1.2) - (getTMB() * 0.15 )).toFixed(2) }} calorías</strong></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<hr>

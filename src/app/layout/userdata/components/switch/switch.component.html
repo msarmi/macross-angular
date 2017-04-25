@@ -1,12 +1,12 @@
-<label class="switch">
+<!--<label class="switch">
   <input type="checkbox">
   <div class="slider"></div>
-</label>
+</label>-->
 
-<div class="toggle btn btn-default off" data-toggle="toggle" style="width: 58px; height: 34px;">
-  <input type="checkbox" checked="" data-toggle="toggle">
+<div class="toggle btn btn-primary" [ngClass]="{'btn-primary': isOn, 'btn-default': !isOn, 'off': !isOn }" (click)="isOn = !isOn" data-toggle="toggle" style="width: 90px; height: 34px;">
+  <input type="checkbox" checked="isOn" data-toggle="toggle">
   <div class="toggle-group">
-    <label class="btn btn-primary toggle-on">On</label>
-    <label class="btn btn-default active toggle-off">Off</label>
+    <label class="btn btn-primary toggle-on">Hombre</label>
+    <label class="btn btn-warning active toggle-off">Mujer</label>
     <span class="toggle-handle btn btn-default"></span></div>
 </div>
