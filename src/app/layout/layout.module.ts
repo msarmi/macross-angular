@@ -19,4 +19,4 @@ import { HeaderComponent, SidebarComponent } from '../shared';
         SidebarComponent,
     ]
 })
-export class LayoutModule { }
+export class LayoutModule { } 

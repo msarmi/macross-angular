@@ -5,13 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { UserDataRoutingModule } from './user-data-routing.module';
 import { UserDataComponent } from './user-data.component';
 import { JWBootstrapSwitchModule } from 'jw-bootstrap-switch-ng2';
-import {
-    SwitchComponent
-//    UserTimelineComponent
-//     ,
-//     NotificationComponent,
-//     ChatComponent
-} from './components';
 import { StatModule } from '../../shared';
 
 @NgModule({
@@ -24,12 +17,7 @@ import { StatModule } from '../../shared';
         JWBootstrapSwitchModule
     ],
     declarations: [
-        UserDataComponent,
-        SwitchComponent
-        //,
-        //UserTimelineComponent
-        // NotificationComponent,
-        // ChatComponent
+        UserDataComponent        
     ]
 })
 export class UserDataModule { }
